@@ -1,5 +1,6 @@
 package com.example.projeto001.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,9 +14,19 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(PrimeiroFragment.newInstance())
     }
 
+    //Chama Fragment
+
     fun replaceFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction()
             .replace(R.id.container1, fragment)
             .commitNow()
     }
+
+    //Chamando Intent de Detalhes
+
+    fun chenceScreen(){
+        val intentDetailsActivity = Intent(this, DetailsActivity::class.java)
+        startActivity(intentDetailsActivity)
+    }
+
 }

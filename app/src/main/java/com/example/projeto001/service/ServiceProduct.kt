@@ -11,5 +11,5 @@ interface ServiceProduct {
     fun getProducts(): Call<List<Products>>
 
     @GET("/products/{id}")
-    fun getSingleProduct(@Path("id") productId: Int): Call<ServiceProduct>
+    fun getSingleProduct(@Path("id") productId: Int): Call<Products>
 }

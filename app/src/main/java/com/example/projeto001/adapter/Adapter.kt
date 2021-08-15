@@ -8,10 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.projeto001.R
+import com.example.projeto001.model.Clickbleitem
 import com.example.projeto001.model.Products
 
-class Adapter(var listOfProducts: List<Products>) :
+class Adapter(var listOfProducts: List<Products>, val parametroIterface: Clickbleitem) :
     RecyclerView.Adapter<ProductViewHolder>() {
+
+    //Define o layout para cada item da nossa lista. Link com o arquivo XML
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         LayoutInflater.from(parent.context).inflate(R.layout.product_item, parent, false)
@@ -20,19 +23,23 @@ class Adapter(var listOfProducts: List<Products>) :
             }
     }
 
+    //Manipulamos os dados de cada item (tela x elemento + index)
+    //Aqui que jogamos os dados para a tela, e add os eventos como o de click
+
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         listOfProducts[position].apply {
             holder.bengin(this)
+            holder.itemView.setOnClickListener{
+                //inplementado interface de clicks
+                parametroIterface.onClickDetails(this)
+            }
         }
     }
 
+    //Define quantos elementos a o recycler view irá precisar criar
+
     override fun getItemCount(): Int = listOfProducts.size
 
-//    fun update(newList: List<Products>) {
-//        listOfProducts = listOf()
-//        listOfProducts.addAll(newList)
-//        notifyDataSetChanged()
-//    }
 }
 
 class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
