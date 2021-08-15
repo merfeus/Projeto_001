@@ -29,7 +29,7 @@ class Adapter(var listOfProducts: List<Products>, val parametroIterface: Clickbl
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         listOfProducts[position].apply {
             holder.bengin(this)
-            holder.itemView.setOnClickListener{
+            holder.itemView.setOnClickListener {
                 //inplementado interface de clicks
                 parametroIterface.onClickDetails(this)
             }

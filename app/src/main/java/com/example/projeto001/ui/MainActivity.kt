@@ -5,28 +5,33 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.projeto001.R
-import com.example.projeto001.fragments.PrimeiroFragment
+import com.example.projeto001.fragments.LoginFragment
+import com.example.projeto001.model.Products
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(PrimeiroFragment.newInstance())
+        replaceFragment(LoginFragment.newInstance())
     }
 
     //Chama Fragment
 
-    fun replaceFragment(fragment: Fragment){
+    fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.container1, fragment)
             .commitNow()
     }
 
-    //Chamando Intent de Detalhes
+    //Chamando interface de clicks, passando como parametro Products e fazendo o putExtra para
+    // receber o id do produto
 
-    fun chenceScreen(){
-        val intentDetailsActivity = Intent(this, DetailsActivity::class.java)
-        startActivity(intentDetailsActivity)
+    fun chengeScreen(products: Products) {
+        Intent(this, DetailsActivity::class.java).apply {
+            putExtra("key_product", products.id)
+            startActivity(this)
+        }
+
     }
 
 }

@@ -10,20 +10,21 @@ import com.example.projeto001.adapter.Adapter
 import com.example.projeto001.model.Clickbleitem
 import com.example.projeto001.model.Products
 import com.example.projeto001.service.RetrofitBuilder
-import com.example.projeto001.ui.DetailsActivity
 import com.example.projeto001.ui.MainActivity
 import com.example.projeto001.utils.snackBar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SegundoFragment : Fragment(R.layout.fragment_segundo),Callback<List<Products>>, Clickbleitem {
-
-    private var listOfProducts : List<Products>?= null
+class ListProductsFragment : Fragment(R.layout.fragment_list), Callback<List<Products>>,
+    Clickbleitem {
 
     companion object {
-        fun newInstance() = SegundoFragment()
+        fun newInstance() = ListProductsFragment()
     }
+
+    private var listOfProducts: List<Products>? = null
+
     lateinit var recyclerView: RecyclerView
 
     private val productsCall by lazy {
@@ -35,18 +36,18 @@ class SegundoFragment : Fragment(R.layout.fragment_segundo),Callback<List<Produc
         productsCall.clone().enqueue(this)
     }
 
-    private fun loadComponents(view: View){
+    private fun loadComponents(view: View) {
         recyclerView = view.findViewById(R.id.recyclerViewProducts)
-        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
         recyclerView.adapter = Adapter(listOfProducts!!, this)
     }
 
     override fun onResponse(call: Call<List<Products>>, response: Response<List<Products>>) {
         response.body()?.apply {
-            if (this != null){
+            if (this != null) {
                 listOfProducts = this
                 loadComponents(requireView())
-            } else{
+            } else {
                 productsCall.clone().enqueue(this)
             }
         }
@@ -59,6 +60,7 @@ class SegundoFragment : Fragment(R.layout.fragment_segundo),Callback<List<Produc
     }
 
     override fun onClickDetails(products: Products) {
-        (requireActivity() as? MainActivity)?.chenceScreen()
+        (requireActivity() as? MainActivity)?.chengeScreen(products)
+
     }
 }

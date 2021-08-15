@@ -15,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailsActivity : AppCompatActivity(), Callback<Products>{
+class DetailsActivity : AppCompatActivity(), Callback<Products> {
 
     private lateinit var productImageView: ImageView
     private lateinit var titleTextView: TextView
@@ -25,9 +25,18 @@ class DetailsActivity : AppCompatActivity(), Callback<Products>{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
+
         loadComponents()
 
+        loadDetaill()
     }
+
+    private fun loadDetaill() {
+        val productId = intent.getIntExtra("key_product", 0)
+        val call = RetrofitBuilder.getProductsServices().getSingleProduct(productId)
+        call.clone().enqueue(this)
+    }
+
 
     private fun loadComponents() {
 
@@ -59,6 +68,5 @@ class DetailsActivity : AppCompatActivity(), Callback<Products>{
     override fun onFailure(call: Call<Products>, t: Throwable) {
         snackBarAcivity(titleTextView, R.string.error_message_server)
     }
-
 
 }

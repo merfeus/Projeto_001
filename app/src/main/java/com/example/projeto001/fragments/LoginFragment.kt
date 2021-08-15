@@ -13,10 +13,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PrimeiroFragment : Fragment(R.layout.fragment_primeiro), Callback<List<User>> {
+class LoginFragment : Fragment(R.layout.fragment_login), Callback<List<User>> {
 
     companion object {
-        fun newInstance() = PrimeiroFragment()
+        fun newInstance() = LoginFragment()
     }
 
     private lateinit var inEmail: EditText
@@ -44,7 +44,7 @@ class PrimeiroFragment : Fragment(R.layout.fragment_primeiro), Callback<List<Use
         }
         if (user != null) {
             println("ok")
-            replaceFragment(SegundoFragment())
+            replaceFragment(ListProductsFragment())
         } else {
             view?.let {
                 snackBar(inEmail, R.string.error_message_auth)
