@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="3dp"
-    android:elevation="23dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:elevation="33dp"
+    app:cardCornerRadius="20dp"
     tools:context=".ui.DetailsActivity">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,8 +30,8 @@
             android:layout_marginTop="12dp"
             android:gravity="start"
             android:maxLines="2"
-            android:textSize="23dp"
             android:textColor="@color/green"
+            android:textSize="23dp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +54,8 @@
             android:id="@+id/subtitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="10"
             android:layout_marginTop="8dp"
+            android:maxLines="10"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
