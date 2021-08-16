@@ -46,14 +46,14 @@ class DetailsActivity : AppCompatActivity(), Callback<Products> {
         priceTextView = findViewById(R.id.priceTextView)
     }
 
-    fun bind(productResponse: Products) {
+    fun bind(product: Products) {
 
-        titleTextView.text = productResponse.title
-        subtitleTextView.text = productResponse.description
-        priceTextView.text = "R$ ${productResponse.price}"
+        titleTextView.text = product.title
+        subtitleTextView.text = product.description
+        priceTextView.text = "R$ ${product.price}"
 
         Glide.with(this)
-            .load(productResponse.image)
+            .load(product.image)
             .placeholder(R.drawable.ic_baseline_hide_image_24)
             .into(productImageView)
     }

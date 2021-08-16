@@ -28,7 +28,7 @@ class Adapter(var listOfProducts: List<Products>, val parametroIterface: Clickbl
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         listOfProducts[position].apply {
-            holder.bengin(this)
+            holder.begin(this)
             holder.itemView.setOnClickListener {
                 //inplementado interface de clicks
                 parametroIterface.onClickDetails(this)
@@ -49,7 +49,7 @@ class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val subtitleTextView: TextView = itemView.findViewById(R.id.subtitleTextView)
     private val priceTextView: TextView = itemView.findViewById(R.id.priceTextView)
 
-    fun bengin(productResponse: Products) {
+    fun begin(productResponse: Products) {
 
         titleTextView.text = productResponse.title
         subtitleTextView.text = productResponse.description
