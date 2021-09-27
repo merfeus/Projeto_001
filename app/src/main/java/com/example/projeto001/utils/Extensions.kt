@@ -10,12 +10,14 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 
 import com.example.projeto001.R
 import com.example.projeto001.ui.MainActivity
 import com.google.android.material.snackbar.Snackbar
 
 fun Fragment.snackBar(view: View, @StringRes resId: Int) {
+    
     setupSnackBar(view, resId, R.color.red).apply {
         this.show()
     }
